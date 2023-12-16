@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Snapshot.sol";
+import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Snapshot.sol';
 
 /**
  * @title DamnValuableTokenSnapshot
@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Snapshot.sol";
 contract DamnValuableTokenSnapshot is ERC20Snapshot {
     uint256 private _lastSnapshotId;
 
-    constructor(uint256 initialSupply) ERC20("DamnValuableToken", "DVT") {
+    constructor(uint256 initialSupply) ERC20('DamnValuableToken', 'DVT') {
         _mint(msg.sender, initialSupply);
     }
 
@@ -20,7 +20,9 @@ contract DamnValuableTokenSnapshot is ERC20Snapshot {
         _lastSnapshotId = lastSnapshotId;
     }
 
-    function getBalanceAtLastSnapshot(address account) external view returns (uint256) {
+    function getBalanceAtLastSnapshot(
+        address account
+    ) external view returns (uint256) {
         return balanceOfAt(account, _lastSnapshotId);
     }
 

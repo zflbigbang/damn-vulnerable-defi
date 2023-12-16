@@ -2,17 +2,18 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "solady/src/auth/OwnableRoles.sol";
+import {ERC20 as hhh} from '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+
+import 'solady/src/auth/OwnableRoles.sol';
 
 /**
  * @title RewardToken
  * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
  */
-contract RewardToken is ERC20, OwnableRoles {
+contract RewardToken is hhh, OwnableRoles {
     uint256 public constant MINTER_ROLE = _ROLE_0;
 
-    constructor() ERC20("Reward Token", "RWT") {
+    constructor() hhh('Reward Token', 'RWT') {
         _initializeOwner(msg.sender);
         _grantRoles(msg.sender, MINTER_ROLE);
     }
